@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Win11-style desktop design system. All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 20% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 20% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 20% 12%;
+
+    --primary: 212 95% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 212 100% 65%;
+
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 222 20% 12%;
+
+    --muted: 210 30% 94%;
+    --muted-foreground: 215 14% 45%;
+
+    --accent: 212 95% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 25% 88%;
+    --input: 214 25% 88%;
+    --ring: 212 95% 50%;
+
+    --radius: 0.625rem;
+
+    /* Win11 acrylic surfaces */
+    --acrylic: 0 0% 100% / 0.65;
+    --acrylic-strong: 0 0% 100% / 0.85;
+    --acrylic-border: 0 0% 100% / 0.4;
+    --window-bg: 210 30% 98%;
+    --window-header: 210 30% 96%;
+    --taskbar: 0 0% 100% / 0.55;
+    --start-menu: 0 0% 100% / 0.78;
+    --icon-hover: 222 20% 12% / 0.06;
+    --icon-selected: 212 95% 50% / 0.18;
+    --icon-selected-border: 212 95% 50% / 0.55;
+    --folder-body: 43 98% 66%;
+    --folder-tab: 44 96% 58%;
+    --folder-highlight: 50 100% 78%;
+    --folder-edge: 35 76% 44%;
+    --folder-shadow: 33 70% 30%;
+
+    --shadow-window: 0 24px 60px -12px hsl(222 30% 10% / 0.35), 0 8px 24px -8px hsl(222 30% 10% / 0.25);
+    --shadow-acrylic: 0 12px 40px -10px hsl(222 30% 10% / 0.25);
+    --shadow-icon: 0 6px 14px -4px hsl(222 30% 10% / 0.35);
+
+    --transition-snappy: 180ms cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-soft: 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dark {
+    --background: 222 25% 8%;
+    --foreground: 210 30% 96%;
+
+    --card: 222 22% 12%;
+    --card-foreground: 210 30% 96%;
+
+    --popover: 222 22% 12%;
+    --popover-foreground: 210 30% 96%;
+
+    --primary: 212 100% 62%;
+    --primary-foreground: 222 25% 8%;
+    --primary-glow: 212 100% 70%;
+
+    --secondary: 222 18% 18%;
+    --secondary-foreground: 210 30% 96%;
+
+    --muted: 222 18% 16%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 212 100% 62%;
+    --accent-foreground: 222 25% 8%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 18% 22%;
+    --input: 222 18% 22%;
+    --ring: 212 100% 62%;
+
+    --acrylic: 222 22% 12% / 0.6;
+    --acrylic-strong: 222 22% 12% / 0.85;
+    --acrylic-border: 0 0% 100% / 0.08;
+    --window-bg: 222 22% 13%;
+    --window-header: 222 22% 16%;
+    --taskbar: 222 22% 10% / 0.62;
+    --start-menu: 222 22% 12% / 0.82;
+    --icon-hover: 0 0% 100% / 0.08;
+    --icon-selected: 212 100% 62% / 0.22;
+    --icon-selected-border: 212 100% 62% / 0.6;
+    --folder-body: 43 96% 62%;
+    --folder-tab: 42 92% 55%;
+    --folder-highlight: 48 100% 74%;
+    --folder-edge: 34 74% 38%;
+    --folder-shadow: 30 65% 22%;
+
+    --shadow-window: 0 28px 80px -12px hsl(0 0% 0% / 0.6), 0 8px 24px -8px hsl(0 0% 0% / 0.5);
+    --shadow-acrylic: 0 12px 40px -10px hsl(0 0% 0% / 0.5);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html, body, #root { height: 100%; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    user-select: none;
+  }
+}
+
+@layer components {
+  .acrylic {
+    background-color: hsl(var(--acrylic));
+    backdrop-filter: blur(40px) saturate(160%);
+    -webkit-backdrop-filter: blur(40px) saturate(160%);
+    border: 1px solid hsl(var(--acrylic-border));
+  }
+  /* macOS-style frosted glass for Control Center & Finder surfaces */
+  .mac-glass {
+    background: linear-gradient(180deg, hsl(0 0% 100% / 0.55), hsl(0 0% 100% / 0.35));
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid hsl(0 0% 100% / 0.45);
+    box-shadow:
+      0 20px 60px -15px hsl(222 30% 10% / 0.35),
+      0 6px 18px -6px hsl(222 30% 10% / 0.18),
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.6);
+  }
+  .dark .mac-glass {
+    background: linear-gradient(180deg, hsl(222 22% 18% / 0.7), hsl(222 22% 12% / 0.55));
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    box-shadow:
+      0 24px 70px -18px hsl(0 0% 0% / 0.65),
+      0 8px 22px -8px hsl(0 0% 0% / 0.45),
+      inset 0 1px 0 0 hsl(0 0% 100% / 0.06);
+  }
+  .mac-tile {
+    background: hsl(0 0% 100% / 0.55);
+    border: 1px solid hsl(0 0% 100% / 0.5);
+    backdrop-filter: blur(20px) saturate(160%);
+    transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  }
+  .mac-tile:hover { background: hsl(0 0% 100% / 0.75); transform: translateY(-1px); }
+  .dark .mac-tile {
+    background: hsl(222 18% 22% / 0.55);
+    border: 1px solid hsl(0 0% 100% / 0.07);
+  }
+  .dark .mac-tile:hover { background: hsl(222 18% 26% / 0.75); }
+  .mac-tile-active {
+    background: linear-gradient(180deg, hsl(var(--primary) / 0.95), hsl(var(--primary) / 0.85)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border-color: hsl(var(--primary) / 0.6) !important;
+    box-shadow: 0 6px 18px -6px hsl(var(--primary) / 0.5);
+  }
+  /* macOS-style range slider */
+  .mac-range {
+    -webkit-appearance: none; appearance: none;
+    height: 22px; background: transparent; width: 100%;
+  }
+  .mac-range::-webkit-slider-runnable-track {
+    height: 22px; border-radius: 999px;
+    background: hsl(0 0% 100% / 0.45);
+    border: 1px solid hsl(0 0% 100% / 0.5);
+    box-shadow: inset 0 1px 2px hsl(222 30% 10% / 0.1);
+  }
+  .dark .mac-range::-webkit-slider-runnable-track {
+    background: hsl(222 18% 22% / 0.6);
+    border-color: hsl(0 0% 100% / 0.07);
+  }
+  .mac-range::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 22px; height: 22px; border-radius: 999px;
+    background: #fff;
+    border: 1px solid hsl(222 20% 80%);
+    box-shadow: 0 2px 6px hsl(222 30% 10% / 0.25);
+    margin-top: 0;
+    cursor: pointer;
+  }
+  .mac-range::-moz-range-track {
+    height: 22px; border-radius: 999px;
+    background: hsl(0 0% 100% / 0.45);
+    border: 1px solid hsl(0 0% 100% / 0.5);
+  }
+  .mac-range::-moz-range-thumb {
+    width: 22px; height: 22px; border-radius: 999px;
+    background: #fff; border: 1px solid hsl(222 20% 80%);
+    box-shadow: 0 2px 6px hsl(222 30% 10% / 0.25);
+    cursor: pointer;
+  }
+  .acrylic-strong {
+    background-color: hsl(var(--acrylic-strong));
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border: 1px solid hsl(var(--acrylic-border));
+  }
+  .taskbar-surface {
+    background-color: hsl(var(--taskbar));
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid hsl(var(--acrylic-border));
+  }
+  .start-surface {
+    background-color: hsl(var(--start-menu));
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border: 1px solid hsl(var(--acrylic-border));
+  }
+  .window-surface {
+    background-color: hsl(var(--window-bg));
+    box-shadow: var(--shadow-window);
+    border: 1px solid hsl(var(--acrylic-border));
+  }
+}
+
+@layer utilities {
+  .no-select { user-select: none; -webkit-user-select: none; }
+  .scrollbar-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.4);
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+}
