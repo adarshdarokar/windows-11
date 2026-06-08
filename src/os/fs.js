@@ -175,7 +175,7 @@ function buildSeed() {
       "Portfolio Site\n\n" +
       "A modern portfolio built with React, styled like Windows 11.\n\n" +
       "Github :- https://github.com/adarshdarokar/windows-11-ui\n" +
-      "Preview/Live :- https://windows-11-ui-woad.vercel.app",
+      "Preview/Live :- https://windows-11-eghg.onrender.com",
   });
 
   add({
